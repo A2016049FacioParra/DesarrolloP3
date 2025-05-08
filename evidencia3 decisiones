@@ -1,0 +1,186 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/A2016049FacioParra/DesarrolloP3/blob/main/evidencia3%20decisiones\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd"
+      ],
+      "metadata": {
+        "id": "Zsz1Jjyq2eSl"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**Filtrado de Datos Basado en los Ejes de un DataFrame**\n"
+      ],
+      "metadata": {
+        "id": "myt8flSi2Mg4"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Crear un DataFrame de ejemplo\n",
+        "data = {\n",
+        "    'ID': [101, 102, 103, 104, 105],\n",
+        "    'Nombre': ['Ana', 'Luis', 'Carlos', 'Marta', 'Elena'],\n",
+        "    'Edad': [28, 34, 22, 45, 31],\n",
+        "    'Ciudad': ['Monterrey', 'CDMX', 'Guadalajara', 'Monterrey', 'CDMX'],\n",
+        "    'Salario': [30000, 45000, 32000, 60000, 52000]\n",
+        "}\n",
+        "\n",
+        "df = pd.DataFrame(data)\n",
+        "\n",
+        "print(df)"
+      ],
+      "metadata": {
+        "id": "cjNwfLhH1zf7"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Filtrado por columnas (eje 1)"
+      ],
+      "metadata": {
+        "id": "y8JDohrS2PLw"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Seleccionar solo las columnas 'Nombre' y 'Salario'\n",
+        "df_columnas = df[['Nombre', 'Salario']]\n",
+        "print(df_columnas)\n"
+      ],
+      "metadata": {
+        "id": "I1N-84ji1zeA"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Filtrado por renglones (eje 0)"
+      ],
+      "metadata": {
+        "id": "Gn_svv-n2Rs2"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Seleccionar las filas 0 a 2\n",
+        "df_renglones = df.iloc[0:3]\n",
+        "print(df_renglones)\n"
+      ],
+      "metadata": {
+        "id": "24QCyEcG1zb3"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**Filtrado Booleano Aplicado sobre un DataFrame**"
+      ],
+      "metadata": {
+        "id": "z-qqtxgy18Gu"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Ejemplo 1: Edad mayor a 30 años"
+      ],
+      "metadata": {
+        "id": "oQLXAvse18gu"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df_edad = df[df['Edad'] > 30]\n",
+        "print(df_edad)\n"
+      ],
+      "metadata": {
+        "id": "CQBbdnAv1zZn"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Ejemplo 2: Ciudad sea Monterrey y salario mayor a 40000"
+      ],
+      "metadata": {
+        "id": "EBnhFKx82BnM"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df_condicional = df[(df['Ciudad'] == 'Monterrey') & (df['Salario'] > 40000)]\n",
+        "print(df_condicional)\n"
+      ],
+      "metadata": {
+        "id": "sSSMTSsC1zXD"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Ejemplo 3: Ciudad esté en una lista de ciudades específicas"
+      ],
+      "metadata": {
+        "id": "K8VTcYPu2DMZ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "ciudades = ['Monterrey', 'Guadalajara']\n",
+        "df_ciudades = df[df['Ciudad'].isin(ciudades)]\n",
+        "print(df_ciudades)\n"
+      ],
+      "metadata": {
+        "id": "9vkAC_Th1zUv"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Te damos la bienvenida a Colab",
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
